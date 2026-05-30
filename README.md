@@ -1,5 +1,7 @@
 # Codex PR Pilot
 
+[![CI](https://github.com/galaxypopnblm-commits/codex-pr-pilot/actions/workflows/ci.yml/badge.svg)](https://github.com/galaxypopnblm-commits/codex-pr-pilot/actions/workflows/ci.yml)
+
 Codex PR Pilot is a lightweight GitHub Actions assistant for pull request maintainers. It reads a PR diff, asks an OpenAI model for a focused review, and can post the result back as a pull request comment.
 
 The first version is intentionally small:
