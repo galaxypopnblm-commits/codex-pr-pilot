@@ -1,0 +1,35 @@
+name: Codex PR Pilot
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install .
+
+      - name: Run Codex PR Pilot
+        if: env.OPENAI_API_KEY != ''
+        run: >
+          codex-pilot
+          --base "${{ github.event.pull_request.base.sha }}"
+          --head "${{ github.sha }}"
+          --comment

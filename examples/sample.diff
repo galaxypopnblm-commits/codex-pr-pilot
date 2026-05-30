@@ -1,0 +1,14 @@
+diff --git a/app.py b/app.py
+index e69de29..4b825dc 100644
+--- a/app.py
++++ b/app.py
+@@ -0,0 +1,9 @@
++import os
++
++
++def read_api_key():
++    return os.environ["OPENAI_API_KEY"]
++
++
++def add(a, b):
++    return a + b
